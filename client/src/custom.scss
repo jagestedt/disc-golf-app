@@ -1,0 +1,17 @@
+/* The following block can be included in a custom.scss */
+
+/* make the customizations */
+$theme-colors: (
+  'primary': green,
+  'info': tomato,
+  'danger': teal,
+  'deep-blue': #033176,
+  'blue': #013fa7,
+  'teal': #168ea9,
+  'green-blue': #36ffbd,
+  'grey': #313131,
+  'black': #011914,
+);
+
+/* import bootstrap to set changes */
+@import '~bootstrap/scss/bootstrap';

@@ -1,7 +1,7 @@
 {
   "name": "u11-disc-golf-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./server/server.js",
   "author": "Samuel Jägestedt",
   "license": "MIT",
   "dependencies": {

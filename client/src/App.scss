@@ -1,13 +1,22 @@
 /* The following line can be included in a src/App.scss */
 
 @import '~bootstrap/scss/bootstrap';
+@import './custom.scss';
+
+body {
+  //   color: white;
+}
 
 .App {
   text-align: center;
+  background-color: $bg;
+  height: 100vh;
+  padding: 0 1em;
+  color: $blue;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 25vmin;
   pointer-events: none;
 }
 
@@ -18,8 +27,9 @@
 }
 
 .App-header {
-  background-color: #313131;
-  min-height: 50vh;
+  //   background-color: #313131;
+  //   min-height: 5vh;
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,4 +49,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.login-view,
+.register-view {
+  padding: 2em;
 }

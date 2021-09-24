@@ -1,0 +1,74 @@
+@import '../../custom.scss';
+
+.disc-list {
+  //   background-color: $grey;
+  .disc-item {
+  }
+  .disc-info-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: $bg-darker;
+    .left {
+      margin: 1em;
+      text-align: left;
+      h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+      h3 {
+        font-size: 1em;
+      }
+    }
+    .right {
+      background-color: $deep-blue;
+      color: white;
+      min-height: 100%;
+
+      .agrid-container {
+        min-height: 100%;
+      }
+
+      .rating-container {
+        height: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .rating-digit {
+        min-height: 50px;
+        min-width: 50px;
+      }
+      .border-t {
+        border-top: 1px $accent solid;
+      }
+      .border-b {
+        border-bottom: 1px $accent solid;
+      }
+      .border-l {
+        border-left: 1px $accent solid;
+      }
+      .border-r {
+        border-right: 1px $accent solid;
+      }
+      .cross {
+        background: $accent;
+        height: 100px;
+        position: relative;
+        left: 50px;
+        width: 2px;
+      }
+      .cross:after {
+        background: $accent;
+        content: '';
+        height: 2px;
+        left: -50px;
+        top: 50px;
+        position: absolute;
+        width: 100px;
+      }
+    }
+  }
+}

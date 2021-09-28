@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Email is required'],
     unique: true,
-    match: [/^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/, 'Please enter a valid email'],
+    match: [/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please provide a valid email'],
   },
   password: {
     type: String,
@@ -22,7 +22,8 @@ const UserSchema = new mongoose.Schema({
   resetPasswordExpire: Date,
 });
 
-UserSchema.pre('save', async function () {
+// PASSWORD HASH MIDDLEWARE
+UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();
   }

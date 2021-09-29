@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth')); //redirects all api/auth
+app.use('/api/protected', require('./routes/protected'));
 
 // Error handler (should be last of the middleware)
 app.use(errorHandler);

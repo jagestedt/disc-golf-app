@@ -1,4 +1,6 @@
+const {request} = require('express');
 const User = require('../models/User');
+const ErrorResponse = require('../utils/errorResponse');
 
 exports.register = async (req, res, next) => {
   const {username, email, password} = req.body;
@@ -15,10 +17,7 @@ exports.register = async (req, res, next) => {
       user,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: error.message,
-    });
+    next(error);
   }
 };
 
@@ -26,25 +25,27 @@ exports.login = async (req, res, next) => {
   const {email, password} = req.body;
 
   if (!email || !password) {
-    res.status(400).json({success: false, error: 'Enter email and password'});
+    return next(new ErrorResponse('Enter email and password', 400));
+  }
+  try {
+    const user = await User.findOne({email}).select('+password');
 
-    try {
-      const user = await User.findOne({email}).select('+password');
-
-      if (!user) {
-        res.status(404).json({success: false, error: 'No user with that email, enter correct information'});
-      }
-
-      const isMatch = await user.matchPasswords(password);
-
-      if (!isMatch) {
-        res.status(404).json({success: false, error: 'Wrong login credentials'});
-
-        res.status(200).json({success: true, token: '535432f54ga3'});
-      }
-    } catch (error) {
-      res.status(500).json({success: false, error: error.message});
+    if (!user) {
+      return next(new ErrorResponse('No user with that email', 401));
     }
+
+    const isMatch = await user.matchPasswords(password);
+
+    if (!isMatch) {
+      return next(new ErrorResponse('Wrong login credentials', 401));
+    }
+
+    res.status(200).json({
+      success: true,
+      token: 'tr34f3443fc',
+    });
+  } catch (error) {
+    res.status(500).json({success: false, error: error.message});
   }
 };
 

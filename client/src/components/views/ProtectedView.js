@@ -1,44 +1,47 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
-const ProtectedScreen = ({ history }) => {
-    const [error, setError] = useState("");
-    const [protectedData, setProtectedData] = useState("");
+import Navigation from '../Navigation';
 
-    useEffect(() => {
-        const fetchProtectedData = async () => {
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-                },
-            };
+const ProtectedScreen = ({history}) => {
+  const [error, setError] = useState('');
+  const [protectedData, setProtectedData] = useState('');
 
-            try {
-                const { data } = await axios.get("/api/protected", config);
-                setProtectedData(data.data);
-            } catch (error) {
-                localStorage.removeItem("authToken");
-                setError("You are not authorized please login");
-            }
-        };
+  useEffect(() => {
+    const fetchProtectedData = async () => {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        },
+      };
 
-        fetchProtectedData();
-    }, []);
-
-    const logoutHandler = () => {
+      try {
+        const {data} = await axios.get('/api/protected', config);
+        setProtectedData(data.data);
+      } catch (error) {
         localStorage.removeItem('authToken');
-        history.push('/login');
+        setError('You are not authorized please login');
+      }
     };
 
-    return error ? (
-        <span className="error-message">{error}</span>
-    ) : (
-        <div>
-            <div>{protectedData}</div>
-            <button onClick={logoutHandler}>Logout</button>
-        </div>
-    );
+    fetchProtectedData();
+  }, []);
+
+  const logoutHandler = () => {
+    localStorage.removeItem('authToken');
+    history.push('/login');
+  };
+
+  return error ? (
+    <span className="error-message">{error}</span>
+  ) : (
+    <div>
+      <div>{protectedData}</div>
+      <button onClick={logoutHandler}>Logout</button>
+      <Navigation />
+    </div>
+  );
 };
 
 export default ProtectedScreen;

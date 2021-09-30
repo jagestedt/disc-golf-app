@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 // Routing
-import {ProtectedRoute} from './components/routing/ProtectedRoute';
+import ProtectedRoute from './components/routing/ProtectedRoute';
 
 import logo from './logo.svg';
 import './App.scss';
@@ -49,8 +49,8 @@ const App = () => {
             <ProtectedRoute exact path="/" component={ProtectedView} />
             <Route exact path="/login" component={LoginView} />
             <Route exact path="/register" component={RegisterView} />
-            <Route exact path="/discs" component={DiscsView} />
-            <Route exact path="/scorecards" component={ScorecardsView} />
+            <ProtectedRoute exact path="/discs" component={DiscsView} />
+            <ProtectedRoute exact path="/scorecards" component={ScorecardsView} />
           </Switch>
         </div>
       </div>

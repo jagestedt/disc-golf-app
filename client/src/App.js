@@ -1,9 +1,13 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
+// Routing
+import ProtectedRoute from './components/routing/ProtectedRoute';
+
 import logo from './logo.svg';
 import './App.scss';
 
 // Views
+import ProtectedView from './components/views/ProtectedView';
 import LoginView from './components/views/LoginView';
 import RegisterView from './components/views/RegisterView';
 import DiscsView from './components/views/DiscsView';
@@ -19,22 +23,22 @@ const App = () => {
         <nav>
           <ul className="p-0">
             <li>
-              <a className="text-white" href="/login">
+              <a className="text-primary" href="/login">
                 Login
               </a>
             </li>
             <li>
-              <a className="text-white" href="/register">
+              <a className="text-primary" href="/register">
                 Register
               </a>
             </li>
             <li>
-              <a className="text-white" href="/discs">
+              <a className="text-primary" href="/discs">
                 Discs
               </a>
             </li>
             <li>
-              <a className="text-white" href="/scorecards">
+              <a className="text-primary" href="/scorecards">
                 Scorecards
               </a>
             </li>
@@ -42,10 +46,11 @@ const App = () => {
         </nav>
         <div>
           <Switch>
+            <ProtectedRoute exact path="/" component={ProtectedView} />
             <Route exact path="/login" component={LoginView} />
             <Route exact path="/register" component={RegisterView} />
-            <Route exact path="/discs" component={DiscsView} />
-            <Route exact path="/scorecards" component={ScorecardsView} />
+            <ProtectedRoute exact path="/discs" component={DiscsView} />
+            <ProtectedRoute exact path="/scorecards" component={ScorecardsView} />
           </Switch>
         </div>
       </div>

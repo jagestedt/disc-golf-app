@@ -17,12 +17,14 @@ $secondary: #168ea9;
 $accent: #36ffbd;
 $grey: #313131;
 $black: #011914;
-$subtle: lighten($grey, 55);
+$subtle: lighten($grey, 25);
 
 /* make the customizations */
 $theme-colors: (
-  'primary': $teal,
+  'primary': $primary,
   'secondary': $green-blue,
+  'dark': $black,
+  'grey': $grey,
   'subtle': $subtle,
   'info': #f24e8c,
   'danger': #f25735,

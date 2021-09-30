@@ -1,36 +1,66 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import './LoginView.scss';
 
-const LoginView = () => {
+const LoginView = ({history}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      history.push('/');
+    }
+  }, [history]);
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+
+    const config = {
+      header: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const {data} = await axios.post('/api/auth/login', {email, password}, config);
+
+      localStorage.setItem('authToken', data.token);
+
+      history.push('/');
+    } catch (error) {
+      setError(error.response.data.error);
+      setTimeout(() => {
+        setError('');
+      }, 5000);
+    }
+  };
+
   return (
     <div className="login-view">
       <h1>Login</h1>
-      <Form>
+      {error && <span className="error-message">{error}</span>}
+      <Form onSubmit={loginHandler}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control type="email" placeholder="Enter email" required id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control type="password" placeholder="Password" required id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
 
         <Button variant="primary" className="text-white" type="submit">
           Login
         </Button>
-        <Button variant="link" className="text-subtle">
-          Forgot your password?
-        </Button>
-        {/* <a href="/register" variant="ml-1" className="link-white ml-2" type="submit">
-          Forgot you password?
-        </a> */}
-        <hr />
-        <a href="/register" className="text-secondary">
+        <br />
+        <a href="/register" className="link-subtle" type="submit">
           No account? Register here.
         </a>
       </Form>
@@ -41,10 +71,18 @@ const LoginView = () => {
           <input type="text" required id="username" placeholder="Enter username" />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="email">Email</label>
+          <input type="text" required id="email" placeholder="Enter email" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Enter a password</label>
           <input type="password" required id="password" placeholder="Enter password" />
         </div>
-        <button type="submit">Login</button>
+        <div className="form-group">
+          <label htmlFor="password-confirmation">Re-enter password</label>
+          <input type="password" required id="password-confirmation" placeholder="Re-enter password" />
+        </div>
+        <button type="submit">Register</button>
       </form> */}
     </div>
   );

@@ -19,7 +19,7 @@ app.use(cors(corsOptions));
 
 app.use('/api/auth', require('./routes/auth')); //redirects all api/auth
 app.use('/api/protected', require('./routes/protected'));
-// app.use('/api/users', require('./routes/users'));
+app.use('/api/users', require('./routes/users'));
 // Error handler (should be last of the middleware)
 app.use(errorHandler);
 

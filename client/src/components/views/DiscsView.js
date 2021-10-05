@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Navigation from '../../Navigation';
+import Navigation from '../Navigation';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -23,7 +23,6 @@ const DiscsView = () => {
               </div>
               <div className="right">
                 <Container className="agrid-container">
-                  {/* <div className="cross"></div> */}
                   <Row className="border-b">
                     <Col className="border-r rating-digit">
                       <div className="rating-container">
@@ -52,38 +51,6 @@ const DiscsView = () => {
               </div>
             </div>
           </li>
-          {/* <li className="disc-item mb-1">
-                    <div className="disc-info-container">
-                    <div className="left">
-                    <h2>Saint</h2>
-                    <h3>Latitude 64</h3>
-                    </div>
-                    <div className="right">
-                    <div className="cross"></div>
-                    <div className="rating">9</div>
-                    <div className="rating">7</div>
-                    <div className="rating">-1</div>
-                    <div className="rating">3</div>
-                    </div>
-                    
-                    </div>
-                    </li>
-                    <li className="disc-item mb-1">
-                    <div className="disc-info-container">
-                    <div className="left">
-                    <h2>StarRoc3</h2>
-                    <h3>Innova</h3>
-                    </div>
-                    <div className="right">
-                    <div className="cross"></div>
-                    <div className="rating">5</div>
-                    <div className="rating">4</div>
-                    <div className="rating">0</div>
-                    <div className="rating">3</div>
-                    </div>
-                    
-                    </div>
-                </li> */}
         </ul>
       </div>
     </div>

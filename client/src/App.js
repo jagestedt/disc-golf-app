@@ -10,7 +10,7 @@ import './App.scss';
 import ProtectedView from './components/views/ProtectedView';
 import LoginView from './components/views/LoginView';
 import RegisterView from './components/views/RegisterView';
-import DiscsView from './components/views/Discs/DiscsView';
+import DiscsView from './components/views/DiscsView';
 import ScorecardsView from './components/views/Scorecards';
 
 const App = () => {

@@ -2,8 +2,9 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import Navigation from '../Navigation';
+import {Redirect} from 'react-router';
 
-const ProtectedScreen = ({history}) => {
+const ProtectedView = ({history}) => {
   const [error, setError] = useState('');
   const [protectedData, setProtectedData] = useState('');
 
@@ -37,6 +38,7 @@ const ProtectedScreen = ({history}) => {
     <span className="error-message">{error}</span>
   ) : (
     <div>
+      <Redirect to="/discs" />
       <div>{protectedData}</div>
       <button onClick={logoutHandler}>Logout</button>
       <Navigation />
@@ -44,4 +46,4 @@ const ProtectedScreen = ({history}) => {
   );
 };
 
-export default ProtectedScreen;
+export default ProtectedView;

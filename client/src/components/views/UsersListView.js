@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import Search from '../Search'
+
 const UsersList = () => {
     const [users, setUsers] = useState([]);
 
@@ -35,7 +37,10 @@ const UsersList = () => {
         });
     };
 
-    return <div>{renderUsers()}</div>;
+    return <div>
+        <Search users={users} />
+        {renderUsers()}
+    </div>;
 };
 
 export default UsersList;

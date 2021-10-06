@@ -1,7 +1,7 @@
 const Disc = require('../models/Disc');
 const ErrorResponse = require('../utils/errorResponse');
 
-// Get all discs
+// GET ALL discs
 exports.all = (req, res) => {
   try {
     Disc.find().then((users) => {
@@ -12,7 +12,7 @@ exports.all = (req, res) => {
   }
 };
 
-// Create
+// CREATE
 exports.create = async (req, res, next) => {
   const {name, manufacturer, description, speed, inBag} = req.body;
 
@@ -28,7 +28,7 @@ exports.create = async (req, res, next) => {
     inBag: inBag ? inBag : false,
   });
 
-  // Save Tutorial in the database
+  // Save disc in the database
   disc
     .save(disc)
     .then((data) => {
@@ -38,5 +38,19 @@ exports.create = async (req, res, next) => {
       res.status(500).send({
         message: err.message || 'Some error occurred while creating the disc.',
       });
+    });
+};
+
+// GET BY ID
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+
+  Disc.findById(id)
+    .then((data) => {
+      if (!data) res.status(404).send({message: `Could not find any disc with id: ${id}`});
+      else res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({message: `Something went wrong when getting the disc with id: ${id}`});
     });
 };

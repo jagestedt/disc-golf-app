@@ -4,7 +4,8 @@ const router = express.Router();
 const discs = require('../controllers/discs');
 
 // Endpoints
-router.get('/all', discs.all);
-router.post('/create', discs.create);
+router.get('/', discs.all);
+router.post('/', discs.create);
+router.get('/:id', discs.findOne);
 
 module.exports = router;

@@ -6,9 +6,9 @@ import http from '../../http-common';
 const DiscsListView = () => {
   const [discs, setDiscs] = useState([]);
 
-  //   const editDisc = (disc) => {
-  //     return http.update(`/discs/${disc.id}`);
-  //   };
+  const editDisc = (id, data) => {
+    return http.put(`/discs/${id}`, data);
+  };
 
   const deleteDisc = (id) => {
     return http.delete(`/discs/${id}`);
@@ -31,15 +31,15 @@ const DiscsListView = () => {
       return (
         <table>
           <tbody>
-            <tr>
+            <tr key={index}>
               <td className="p-2">{name}</td>
               <td className="p-2">{manufacturer}</td>
               <td className="p-2">{description}</td>
               <td className="p-2">{speed}</td>
               <td className="p-2">
-                {/* <button onClick={editDisc(disc)} className="btn-primary">
+                <button onClick={() => editDisc(_id, {name: 'Framklin'})} className="btn-primary">
                   Edit
-                </button> */}
+                </button>
               </td>
               <td className="p-2">
                 <button onClick={() => deleteDisc(_id)} className="btn-danger">

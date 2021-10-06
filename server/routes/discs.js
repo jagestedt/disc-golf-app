@@ -5,5 +5,6 @@ const discs = require('../controllers/discs');
 
 // Endpoints
 router.get('/all', discs.all);
+router.post('/create', discs.create);
 
 module.exports = router;

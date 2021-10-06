@@ -28,13 +28,15 @@ exports.create = async (req, res, next) => {
     inBag: inBag ? inBag : false,
   });
 
-  try {
-    const user = await Disc.create({
-      name,
-      manufacturer,
-      speed,
+  // Save Tutorial in the database
+  disc
+    .save(disc)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || 'Some error occurred while creating the disc.',
+      });
     });
-  } catch (error) {
-    next(error);
-  }
 };

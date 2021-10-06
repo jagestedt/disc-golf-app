@@ -4,8 +4,8 @@ const ErrorResponse = require('../utils/errorResponse');
 // GET ALL discs
 exports.all = (req, res) => {
   try {
-    Disc.find().then((users) => {
-      res.send(users);
+    Disc.find().then((data) => {
+      res.send(data);
     });
   } catch (error) {
     res.status(500).json({success: false, error: error.message});
@@ -52,5 +52,53 @@ exports.findOne = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({message: `Something went wrong when getting the disc with id: ${id}`});
+    });
+};
+
+// UPDATE a disc
+exports.update = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: 'You need to provide data to update',
+    });
+  }
+
+  const id = req.params.id;
+
+  Disc.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `A disc with id=${id} could not be updated. Are you sure it's the right id?`,
+        });
+      } else res.send({message: 'The disc was updated successfully.'});
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Something went wrong when trying to update the disc with id: + ${id}`,
+      });
+    });
+};
+
+// DELETE a disc
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Disc.findByIdAndRemove(id)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot delete disc with id=${id}. Maybe disc was not found!`,
+        });
+      } else {
+        res.send({
+          message: 'The disc was deleted successfully!',
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Something went wrong when trying to delete the disc with id: + ${id}`,
+      });
     });
 };

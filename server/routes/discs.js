@@ -7,5 +7,7 @@ const discs = require('../controllers/discs');
 router.get('/', discs.all);
 router.post('/', discs.create);
 router.get('/:id', discs.findOne);
+router.put('/:id', discs.update);
+router.delete('/:id', discs.delete);
 
 module.exports = router;

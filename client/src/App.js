@@ -13,6 +13,7 @@ import RegisterView from './components/views/RegisterView';
 import DiscsView from './components/views/DiscsView';
 import ScorecardsView from './components/views/Scorecards';
 import UsersListView from './components/views/UsersListView';
+import DiscsListView from './components/views/DiscsListView';
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
             <ProtectedRoute exact path="/discs" component={DiscsView} />
             <ProtectedRoute exact path="/scorecards" component={ScorecardsView} />
             <ProtectedRoute exact path="/users-list" component={UsersListView} />
+            <ProtectedRoute exact path="/discs-list" component={DiscsListView} />
           </Switch>
         </div>
       </div>

@@ -8,7 +8,7 @@ const DiscSchema = new mongoose.Schema({
   manufacturer: {
     type: String,
   },
-  description: {
+  comment: {
     type: String,
   },
   //   ratings: {

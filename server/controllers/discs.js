@@ -14,7 +14,7 @@ exports.all = (req, res) => {
 
 // CREATE
 exports.create = async (req, res, next) => {
-  const {name, manufacturer, description, speed, inBag} = req.body;
+  const {name, manufacturer, description, speed, glide, turn, fade, inBag} = req.body;
 
   if (!name) {
     return next(new ErrorResponse('You must give the disc a name', 400));
@@ -23,8 +23,12 @@ exports.create = async (req, res, next) => {
   // Create a Disc
   const disc = new Disc({
     name: name,
-    description: description,
     manufacturer: manufacturer,
+    description: description,
+    speed: speed,
+    glide: glide,
+    turn: turn,
+    fade: fade,
     inBag: inBag ? inBag : false,
   });
 

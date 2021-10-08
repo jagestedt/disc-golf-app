@@ -22,7 +22,7 @@ const DiscsView = () => {
                 <h3>Latitude 64</h3>
               </div>
               <div className="right">
-                <Container className="agrid-container">
+                <Container className="grid-container">
                   <Row className="border-b">
                     <Col className="border-r rating-digit">
                       <div className="rating-container">

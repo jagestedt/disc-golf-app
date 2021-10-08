@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const DiscSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'A username is required'],
+    required: [true, 'A name is required'],
   },
   manufacturer: {
     type: String,
@@ -11,7 +11,22 @@ const DiscSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  //   ratings: {
+  //     speed: Number,
+  //     glide: Number,
+  //     turn: Number,
+  //     fade: Number,
+  //   },
   speed: {
+    type: Number,
+  },
+  glide: {
+    type: Number,
+  },
+  turn: {
+    type: Number,
+  },
+  fade: {
     type: Number,
   },
   inBag: {

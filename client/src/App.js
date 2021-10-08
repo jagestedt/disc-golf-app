@@ -35,13 +35,8 @@ const App = () => {
               </a>
             </li>
             <li>
-              <a className="text-primary" href="/discs">
-                Discs
-              </a>
-            </li>
-            <li>
-              <a className="text-primary" href="/scorecards">
-                Scorecards
+              <a className="text-primary" href="/discs-list">
+                Discs list
               </a>
             </li>
           </ul>

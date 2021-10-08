@@ -14,14 +14,21 @@ import EditModal from './EditModal';
 
 const DiscsListView = () => {
     const [discs, setDiscs] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [modalData, setModalData] = useState({});
 
-    const editDisc = (id, data) => {
-        return http.put(`/discs/${id}`, data);
-    };
+    // const editDisc = (id, data) => {
+    //     return http.put(`/discs/${id}`, data);
+    // };
 
     const deleteDisc = (id) => {
         return http.delete(`/discs/${id}`);
     };
+
+    const toggleModal = (data) => {
+        setShowModal((prev) => !prev);
+        setModalData(data);
+    }
 
     useEffect(() => {
         fetch('http://localhost:5000/api/discs/')
@@ -39,7 +46,7 @@ const DiscsListView = () => {
             const { _id, name, manufacturer, comment, speed, glide, turn, fade } = disc;
             return (
                 <div key={index} className="container">
-                    <li key={index} className="disc-item mb-1">
+                    <li className="disc-item mb-1">
                         <div className="disc-info-container">
                             <div className="left">
                                 <h2>{name}</h2>
@@ -75,9 +82,13 @@ const DiscsListView = () => {
                                 </Container>
                             </div>
                             <div className="p-2">
-                                <button onClick={() => editDisc(_id, { name: 'Framklin' })} className="btn-primary">
+                                {/* <button onClick={() => editDisc(_id, { name: 'Framklin' })} className="btn-primary">
                                     Edit
-                                </button>
+                                </button> */}
+                                {/* <button onClick={() => toggleModal(_id, disc)} className="btn-primary">
+                                    Edit
+                                </button> */}
+                                <EditModal show={showModal} setShow={setShowModal} data={modalData} />
                                 <button onClick={() => deleteDisc(_id)} className="btn-danger">
                                     Delete
                                 </button>
@@ -97,7 +108,7 @@ const DiscsListView = () => {
             <ul className="disc-list p-0">
                 {renderDiscs()}
             </ul>
-            <EditModal />
+            <EditModal show={showModal} setShow={setShowModal} data={modalData} />
         </div>
     );
 };

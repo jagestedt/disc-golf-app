@@ -36,7 +36,7 @@ const DiscsListView = () => {
 
     const renderDiscs = () => {
         return discs.map((disc, index) => {
-            const { _id, name, manufacturer, description, speed } = disc;
+            const { _id, name, manufacturer, comment, speed, glide, turn, fade } = disc;
             return (
                 <div key={index} className="container">
                     <li key={index} className="disc-item mb-1">
@@ -44,10 +44,10 @@ const DiscsListView = () => {
                             <div className="left">
                                 <h2>{name}</h2>
                                 <h3>{manufacturer}</h3>
-                                <h4>{description}</h4>
+                                <p className="comment">{comment}</p>
                             </div>
                             <div className="right">
-                                <Container className="agrid-container">
+                                <Container className="grid-container">
                                     <Row className="border-b">
                                         <Col className="border-r rating-digit">
                                             <div className="rating-container">
@@ -56,19 +56,19 @@ const DiscsListView = () => {
                                         </Col>
                                         <Col className="border-l rating-digit">
                                             <div className="rating-container">
-                                                <p className="m-0">1</p>
+                                                <p className="m-0">{glide}</p>
                                             </div>
                                         </Col>
                                     </Row>
                                     <Row className="border-t">
                                         <Col className="border-r rating-digit">
                                             <div className="rating-container">
-                                                <p className="m-0">4</p>
+                                                <p className="m-0">{turn}</p>
                                             </div>
                                         </Col>
                                         <Col className="border-l rating-digit">
                                             <div className="rating-container">
-                                                <p className="m-0">2</p>
+                                                <p className="m-0">{fade}</p>
                                             </div>
                                         </Col>
                                     </Row>
@@ -83,8 +83,8 @@ const DiscsListView = () => {
                                 </button>
                             </div>
                         </div>
-                    </li>
-                </div>
+                    </li >
+                </div >
             );
         });
     };

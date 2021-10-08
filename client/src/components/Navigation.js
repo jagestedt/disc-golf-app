@@ -22,8 +22,8 @@ const Navigation = ({history}) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link className="text-primary" href="/discs">
-                Discs
+              <Nav.Link className="text-primary" href="/discs-list">
+                Discs list
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

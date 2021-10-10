@@ -20,7 +20,7 @@ const AddDisc = () => {
     // const [inBag, setInBag] = useState(false);
     const [error, setError] = useState('');
 
-    const addDiscHandler = async (e) => {
+    const handleAddDisc = async (e) => {
         e.preventDefault();
         console.log('add-disc');
         console.log(speed);
@@ -40,7 +40,7 @@ const AddDisc = () => {
     return (
         <div>
             {error && <span className="error-message">{error}</span>}
-            <Form onSubmit={addDiscHandler}>
+            <Form onSubmit={handleAddDisc}>
                 <h5>Add a disc</h5>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridName">

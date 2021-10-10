@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import http from '../../http-common';
+import DiscServiceData from '../../services/DiscService';
 
 // import Modal from 'react-bootstrap/Modal';
 // import Button from 'react-bootstrap/Button';
@@ -52,15 +53,25 @@ const EditModal = ({ show, setShow, disc }) => {
         setFade(fade);
     };
 
-    const updateDisc = (e) => {
+    const handleUpdateDisc = (e) => {
         e.preventDefault();
         const data = {
-            name, manufacturer, comment, speed, glide, turn, fade
-        }
-        console.log(name);
-        console.log(manufacturer);
-        return http.put(`/discs/${disc._id}`, data);
-        // return http.put(`/discs/${disc._id}`, { name, manufacturer, comment, speed, glide, turn, fade, inBag });
+            name,
+            manufacturer,
+            comment,
+            speed,
+            glide,
+            turn,
+            fade,
+        };
+        DiscServiceData.update(disc._id, data)
+            .then((response) => {
+                console.log(response.data);
+                // setMessage('The tutorial was updated successfully!');
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     return (
@@ -73,7 +84,7 @@ const EditModal = ({ show, setShow, disc }) => {
                             <button onClick={() => setShow((prev) => !prev)}>X</button>
                         </div>
                         <div className="text-center space-y-3 pt-1 flex flex-col">
-                            <Form onSubmit={updateDisc}>
+                            <Form onSubmit={handleUpdateDisc}>
                                 <label>Name: </label>
                                 <input onChange={handleSetName} type="text" required></input>
                                 <label>Manufacturer: </label>

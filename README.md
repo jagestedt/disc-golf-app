@@ -3,10 +3,10 @@ A disc golf app where you can add your discs to keep track of them and their pro
 
 ## Getting Started with the MongoDB database:
 
-Create an account at https://mongodb.com
-Follow the steps to create a free database
-Click connect and choose your application, making sure to select Node.js as the main driver
-Save the URI and enter a password.
+1. Create an account at https://mongodb.com
+2. Follow the steps to create a free database
+3. Click connect and choose your application, making sure to select Node.js as the main driver
+4. Save the URI and enter a password.
 
 
 ## Getting started with the repo:
@@ -17,11 +17,12 @@ Save the URI and enter a password.
 4. Run the client using `yarn start` in the client folder
 
 ## Wireframes: 
-https://www.figma.com/file/ZJ69mNzcPCH35ED2jc5gKq/u11-disc-golf-app?node-id=0%3A1.
-Color theme was changed because a lighter theme is more fitting for outside use on the phone while disc golfing
+- https://www.figma.com/file/ZJ69mNzcPCH35ED2jc5gKq/u11-disc-golf-app?node-id=0%3A1.
+- Color theme was changed because a lighter theme is more fitting for outside use on the phone while disc golfing
 
 ## UX research
-with personas, user stories and more: https://drive.google.com/drive/u/1/folders/1jnF3V-v_KNEPd8C5mfEBeyabL6CQTjWk
+- with personas, user stories and more: 
+- https://drive.google.com/drive/u/1/folders/1jnF3V-v_KNEPd8C5mfEBeyabL6CQTjWk
 
 ## Other notes:
 Git merge history uses either "client__" prefix to indicate if the branch specific is for client and "server__" prefix to indicate if the branch is specific for server. Some Git merges may combine both client and server commits.

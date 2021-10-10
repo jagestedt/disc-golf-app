@@ -17,6 +17,7 @@ Save the URI and enter a password.
 4. Run the client using `yarn start` in the client folder
 
 Wireframes and some colors: https://www.figma.com/file/ZJ69mNzcPCH35ED2jc5gKq/u11-disc-golf-app?node-id=0%3A1
+Color theme was changed because a lighter theme is more fitting for outside use on the phone while disc golfing
 
 UX research with personas, user stories and more: https://drive.google.com/drive/u/1/folders/1jnF3V-v_KNEPd8C5mfEBeyabL6CQTjWk
 

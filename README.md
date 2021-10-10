@@ -16,9 +16,12 @@ Save the URI and enter a password.
 3. Run the server using `yarn start` in the server folder
 4. Run the client using `yarn start` in the client folder
 
-Wireframes and some colors: https://www.figma.com/file/ZJ69mNzcPCH35ED2jc5gKq/u11-disc-golf-app?node-id=0%3A1
+## Wireframes: 
+https://www.figma.com/file/ZJ69mNzcPCH35ED2jc5gKq/u11-disc-golf-app?node-id=0%3A1.
 Color theme was changed because a lighter theme is more fitting for outside use on the phone while disc golfing
 
-UX research with personas, user stories and more: https://drive.google.com/drive/u/1/folders/1jnF3V-v_KNEPd8C5mfEBeyabL6CQTjWk
+## UX research
+with personas, user stories and more: https://drive.google.com/drive/u/1/folders/1jnF3V-v_KNEPd8C5mfEBeyabL6CQTjWk
 
-Other notes: Git merge history uses either "client__" prefix to indicate if the branch specific is for client and "server__" prefix to indicate if the branch is specific for server. Some Git merges may combine both client and server commits.
+## Other notes:
+Git merge history uses either "client__" prefix to indicate if the branch specific is for client and "server__" prefix to indicate if the branch is specific for server. Some Git merges may combine both client and server commits.

@@ -1,4 +1,6 @@
 # u11-fullstack-js-jagestedt
+
+## Disc golf app
 A disc golf app where you can add your discs to keep track of them and their properties.
 
 ## Getting Started with the MongoDB database:

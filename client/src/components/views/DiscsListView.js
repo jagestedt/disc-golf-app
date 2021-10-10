@@ -17,25 +17,6 @@ const DiscsListView = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
-  // const editDisc = (id, data) => {
-  //     return http.put(`/discs/${id}`, data);
-  // };
-
-  const deleteDisc = (id) => {
-    DiscDataService.remove(id)
-      .then((response) => {
-        console.log(response.data);
-        // props.history.push('/disc');
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  //   const deleteDisc = (id) => {
-  //     return http.delete(`/discs/${id}`);
-  //   };
-
   const toggleModal = (id, data) => {
     setShowModal((prev) => !prev);
     setModalData(data);
@@ -50,6 +31,16 @@ const DiscsListView = () => {
       .then((res) => {
         setDiscs(res.data);
         console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const deleteDisc = (id) => {
+    DiscDataService.remove(id)
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);

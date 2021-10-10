@@ -20,10 +20,12 @@ const remove = id => {
     return http.delete(`/discs/${id}`);
 };
 
-export default {
+const DiscDataService = {
     getAll,
     get,
     create,
     update,
-    remove,
-};
+    remove
+}
+
+export default DiscDataService;

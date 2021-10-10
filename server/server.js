@@ -9,13 +9,14 @@ connectDb();
 
 const app = express();
 
-var corsOptions = {
-  origin: '*',
-};
+// var corsOptions = {
+//   origin: '*',
+// };
 
 app.use(express.json());
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors('*'));
 
 // ROUTES
 app.use('/api/auth', require('./routes/auth')); //redirects all api/auth

@@ -6,5 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "heroku": "^7.59.0"
   }
 }

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 
 import Form from 'react-bootstrap/Form';
 
-const Search = ({users}) => {
-  console.log(users);
+const SearchDiscs = ({discs}) => {
+  console.log(discs);
 
   const [searchTerm, setSearchTerm] = useState('');
   return (
@@ -11,25 +11,25 @@ const Search = ({users}) => {
       <h1>Search</h1>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicSearch">
-          <Form.Label>Search by username</Form.Label>
+          <Form.Label>Search discs by name</Form.Label>
           <Form.Control type="text" placeholder="" required value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </Form.Group>
       </Form>
       <ul className="user-list">
-        {users
+        {discs
           .filter((val) => {
             if (searchTerm === '') {
               return val;
-            } else if (val.username.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+            } else if (val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
               return val;
             }
           })
           .map((val, key) => {
-            return <li key={key}>{val.username}</li>;
+            return <li key={key}>{val.name}</li>;
           })}
       </ul>
     </div>
   );
 };
 
-export default Search;
+export default SearchDiscs;

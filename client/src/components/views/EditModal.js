@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import http from '../../http-common';
+import DiscServiceData from '../../services/DiscService';
 
 // import Modal from 'react-bootstrap/Modal';
 // import Button from 'react-bootstrap/Button';
@@ -16,11 +15,6 @@ const EditModal = ({ show, setShow, disc }) => {
     const [glide, setGlide] = useState('');
     const [turn, setTurn] = useState('');
     const [fade, setFade] = useState('');
-
-    const deleteUser = (id) => {
-        console.log('from delete fx', id);
-        return http.delete(`/discs/${id}`);
-    };
 
     const handleSetName = (event) => {
         const name = event.target.value;
@@ -52,15 +46,25 @@ const EditModal = ({ show, setShow, disc }) => {
         setFade(fade);
     };
 
-    const updateDisc = (e) => {
+    const handleUpdateDisc = (e) => {
         e.preventDefault();
         const data = {
-            name, manufacturer, comment, speed, glide, turn, fade
-        }
-        console.log(name);
-        console.log(manufacturer);
-        return http.put(`/discs/${disc._id}`, data);
-        // return http.put(`/discs/${disc._id}`, { name, manufacturer, comment, speed, glide, turn, fade, inBag });
+            name,
+            manufacturer,
+            comment,
+            speed,
+            glide,
+            turn,
+            fade,
+        };
+        DiscServiceData.update(disc._id, data)
+            .then((response) => {
+                console.log(response.data);
+                // setMessage('The tutorial was updated successfully!');
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     return (
@@ -73,7 +77,7 @@ const EditModal = ({ show, setShow, disc }) => {
                             <button onClick={() => setShow((prev) => !prev)}>X</button>
                         </div>
                         <div className="text-center space-y-3 pt-1 flex flex-col">
-                            <Form onSubmit={updateDisc}>
+                            <Form onSubmit={handleUpdateDisc}>
                                 <label>Name: </label>
                                 <input onChange={handleSetName} type="text" required></input>
                                 <label>Manufacturer: </label>
@@ -93,8 +97,8 @@ const EditModal = ({ show, setShow, disc }) => {
                                     <button type="submit" className="py-1 px-2 rounded w-32 bg-green-300 hover:bg-green-200 text-indigo-900">
                                         Save
                                     </button>
-                                    <button onClick={() => deleteUser(disc._id)} className="py-1 px-2 rounded w-32 bg-red-300 hover:bg-red-200 text-indigo-900">
-                                        Delete disc {disc._id}
+                                    <button onClick={() => setShow((prev) => !prev)} className="py-1 px-2 rounded w-32 bg-red-300 hover:bg-red-200 text-indigo-900">
+                                        Close
                                     </button>
                                 </div>
                             </Form>

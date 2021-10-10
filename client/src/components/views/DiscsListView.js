@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import http from '../../http-common';
+import DiscDataService from '../../services/DiscService';
 
 // import ListGroup from 'react-bootstrap/ListGroup'
 import Container from 'react-bootstrap/Container';
@@ -10,46 +10,46 @@ import AddDisc from './AddDisc';
 import './DiscsListView.scss';
 
 import EditModal from './EditModal';
-// import Search from '../Search';
+import SearchDiscs from '../SearchDiscs';
 
 const DiscsListView = () => {
   const [discs, setDiscs] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
-  // const editDisc = (id, data) => {
-  //     return http.put(`/discs/${id}`, data);
-  // };
-
-  const deleteDisc = (id) => {
-    return http.delete(`/discs/${id}`);
-  };
-
   const toggleModal = (id, data) => {
     setShowModal((prev) => !prev);
     setModalData(data);
   };
 
-  // const handleSetModalData = (data) => {
-  //     console.log(data);
-  //     // setModalData(data)
-  // }
   useEffect(() => {
-    fetch('http://localhost:5000/api/discs/')
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setDiscs(data);
-        // console.log(data[1]._id);
-      });
+    getDiscs();
   }, []);
+
+  const getDiscs = () => {
+    DiscDataService.getAll()
+      .then((res) => {
+        setDiscs(res.data);
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const deleteDisc = (id) => {
+    DiscDataService.remove(id)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const renderDiscs = () => {
     return discs.map((disc, index) => {
       const {_id, name, manufacturer, comment, speed, glide, turn, fade} = disc;
-      // setId()
-      // console.log(_id);
       return (
         <div key={index} className="container">
           <li className="disc-item mb-1">
@@ -88,13 +88,9 @@ const DiscsListView = () => {
                 </Container>
               </div>
               <div className="p-2">
-                {/* <button onClick={() => editDisc(_id, { name: 'Framklin' })} className="btn-primary">
-                                    Edit
-                                </button> */}
                 <button onClick={() => toggleModal(_id, disc)} className="btn-primary">
                   Edit
                 </button>
-                {/* <EditModal show={showModal} setShow={setShowModal} data={disc} _id={_id} />{_id}<br /> */}
                 <button onClick={() => deleteDisc(_id)} className="btn btn-danger">
                   Delete
                 </button>
@@ -108,7 +104,7 @@ const DiscsListView = () => {
 
   return (
     <div>
-      {/* <Search discs={discs} /> */}
+      <SearchDiscs discs={discs} />
       <AddDisc />
       <EditModal show={showModal} setShow={setShowModal} disc={modalData} />
       <h1>Your discs</h1>

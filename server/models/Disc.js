@@ -7,9 +7,11 @@ const DiscSchema = new mongoose.Schema({
   },
   manufacturer: {
     type: String,
+    required: [true, 'All fields must me filled'],
   },
   comment: {
     type: String,
+    required: [true, 'All fields must me filled'],
   },
   //   ratings: {
   //     speed: Number,
@@ -19,18 +21,19 @@ const DiscSchema = new mongoose.Schema({
   //   },
   speed: {
     type: Number,
+    required: [true, 'All fields must me filled'],
   },
   glide: {
     type: Number,
+    required: [true, 'All fields must me filled'],
   },
   turn: {
     type: Number,
+    required: [true, 'All fields must me filled'],
   },
   fade: {
     type: Number,
-  },
-  inBag: {
-    type: Boolean,
+    required: [true, 'All fields must me filled'],
   },
 });
 

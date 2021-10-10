@@ -12,8 +12,5 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.7",
     "nodemailer": "^6.6.5"
-  },
-  "scripts": {
-    "start": "node ./server/server.js"
   }
 }

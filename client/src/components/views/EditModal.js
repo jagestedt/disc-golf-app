@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import http from '../../http-common';
 import DiscServiceData from '../../services/DiscService';
 
 // import Modal from 'react-bootstrap/Modal';
@@ -17,11 +15,6 @@ const EditModal = ({ show, setShow, disc }) => {
     const [glide, setGlide] = useState('');
     const [turn, setTurn] = useState('');
     const [fade, setFade] = useState('');
-
-    const deleteUser = (id) => {
-        console.log('from delete fx', id);
-        return http.delete(`/discs/${id}`);
-    };
 
     const handleSetName = (event) => {
         const name = event.target.value;
@@ -104,8 +97,8 @@ const EditModal = ({ show, setShow, disc }) => {
                                     <button type="submit" className="py-1 px-2 rounded w-32 bg-green-300 hover:bg-green-200 text-indigo-900">
                                         Save
                                     </button>
-                                    <button onClick={() => deleteUser(disc._id)} className="py-1 px-2 rounded w-32 bg-red-300 hover:bg-red-200 text-indigo-900">
-                                        Delete disc {disc._id}
+                                    <button onClick={() => setShow((prev) => !prev)} className="py-1 px-2 rounded w-32 bg-red-300 hover:bg-red-200 text-indigo-900">
+                                        Close
                                     </button>
                                 </div>
                             </Form>

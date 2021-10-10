@@ -33,13 +33,13 @@ const RegisterView = ({history}) => {
     }
 
     try {
-      const {data} = await axios.post('/api/auth/register', {username, email, password}, config);
+      const {data} = await axios.post('https://u11-disc-golf-app.herokuapp.com/api/auth/register', {username, email, password}, config);
 
       localStorage.setItem('authToken', data.token);
 
       history.push('/');
     } catch (error) {
-      setError(error.response.data.error);
+      //   setError(error.response.data.error);
       setTimeout(() => {
         setError('');
       }, 5000);
@@ -80,26 +80,6 @@ const RegisterView = ({history}) => {
           Already registered? Login here.
         </a>
       </Form>
-      {/* <form action="" method="post">
-        <h2>Enter your credentials below</h2>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input type="text" required id="username" placeholder="Enter username" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="text" required id="email" placeholder="Enter email" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Enter a password</label>
-          <input type="password" required id="password" placeholder="Enter password" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password-confirmation">Re-enter password</label>
-          <input type="password" required id="password-confirmation" placeholder="Re-enter password" />
-        </div>
-        <button type="submit">Register</button>
-      </form> */}
     </div>
   );
 };

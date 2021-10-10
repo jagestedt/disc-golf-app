@@ -33,7 +33,7 @@ const RegisterView = ({history}) => {
     }
 
     try {
-      const {data} = await axios.post('https://u11-disc-golf-app.herokuapp.com/api/auth/register', {username, email, password}, config);
+      const {data} = await axios.post('/api/auth/register', {username, email, password}, config);
 
       localStorage.setItem('authToken', data.token);
 

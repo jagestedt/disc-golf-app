@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import DiscDataService from '../../services/DiscService';
+import DiscDataService from '../../../services/DiscService';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';

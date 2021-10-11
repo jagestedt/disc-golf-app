@@ -16,12 +16,14 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, 'You need to enter a password'],
+    required: [true, 'You need to enter a password (6 characters minimum)'],
     minlength: 6,
     select: false,
   },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
+  admin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // PASSWORD HASH MIDDLEWARE

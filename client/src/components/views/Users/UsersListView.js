@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import Search from '../Search';
+import Search from './Search';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);

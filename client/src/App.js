@@ -8,12 +8,12 @@ import './App.scss';
 
 // Views
 import ProtectedView from './components/views/ProtectedView';
-import LoginView from './components/views/LoginView';
-import RegisterView from './components/views/RegisterView';
-import DiscsView from './components/views/DiscsView';
+import LoginView from './components/views/Users/LoginView';
+import RegisterView from './components/views/Users/RegisterView';
+import DiscsView from './components/views/Discs/DiscsView';
 import ScorecardsView from './components/views/Scorecards';
-import UsersListView from './components/views/UsersListView';
-import DiscsListView from './components/views/DiscsListView';
+import UsersListView from './components/views/Users/UsersListView';
+// import DiscsListView from './components/views/Discs/DiscsListView';
 
 const App = () => {
   return (
@@ -35,8 +35,13 @@ const App = () => {
               </a>
             </li>
             <li>
-              <a className="text-primary" href="/discs-list">
-                Discs list
+              <a className="text-primary" href="/discs">
+                Discs
+              </a>
+            </li>
+            <li>
+              <a className="text-primary" href="/users">
+                Users
               </a>
             </li>
           </ul>
@@ -49,7 +54,7 @@ const App = () => {
             <ProtectedRoute exact path="/discs" component={DiscsView} />
             <ProtectedRoute exact path="/scorecards" component={ScorecardsView} />
             <ProtectedRoute exact path="/users-list" component={UsersListView} />
-            <ProtectedRoute exact path="/discs-list" component={DiscsListView} />
+            {/* <ProtectedRoute exact path="/discs-list" component={DiscsListView} /> */}
           </Switch>
         </div>
       </div>

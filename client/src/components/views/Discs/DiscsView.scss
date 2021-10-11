@@ -1,6 +1,9 @@
-@import '../../custom.scss';
+@import '../../../custom.scss';
 
 .disc-list {
+  .disc-item {
+    border-bottom: 4px solid $accent;
+  }
   .disc-info-container {
     display: flex;
     justify-content: space-between;
@@ -15,6 +18,10 @@
       }
       h3 {
         font-size: 1em;
+      }
+
+      p {
+        font-style: italic;
       }
     }
     .right {

@@ -1,6 +1,7 @@
-@import '../../../custom.scss';
+@import "../../../custom.scss";
 
 .disc-list {
+  background-color: $deep-blue;
   .disc-item {
     border-bottom: 4px solid $accent;
   }
@@ -66,7 +67,7 @@
       }
       .cross:after {
         background: $accent;
-        content: '';
+        content: "";
         height: 2px;
         left: -50px;
         top: 50px;
@@ -75,4 +76,9 @@
       }
     }
   }
+}
+
+.add-container {
+  background-color: $bg-darker;
+  padding: 1rem;
 }

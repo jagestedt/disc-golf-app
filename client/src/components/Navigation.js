@@ -1,18 +1,19 @@
-import React from 'react';
+import React from "react"
 
 // import {Redirect} from 'react-router-dom';
 
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+import Navbar from "react-bootstrap/Navbar"
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Button from "react-bootstrap/esm/Button"
 // import Button from 'react-bootstrap/Button';
 
-const Navigation = ({history}) => {
-  //   const logoutHandler = () => {
-  //     localStorage.removeItem('authToken');
-  //     history.push('/login');
-  //     // return <Redirect to="/login" />;
-  //   };
+const Navigation = ({ history }) => {
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken")
+    history.push("/login")
+    // return <Redirect to="/login" />;
+  }
   return (
     <div>
       <Navbar bg="light" fixed="bottom" expand="lg">
@@ -27,13 +28,13 @@ const Navigation = ({history}) => {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          {/* <Button className="btn-danger" onClick={logoutHandler}>
+          <Button className="btn-danger" onClick={logoutHandler}>
             Logout
-          </Button> */}
+          </Button>
         </Container>
       </Navbar>
     </div>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
